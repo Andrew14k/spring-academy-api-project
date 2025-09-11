@@ -47,12 +47,12 @@ public class Course{
         this.title = title;
     }
 
-    public List<Trainee> getTrainee() {
+    public List<Trainee> getTrainees() {
         return trainees;
     }
 
-    public void setTrainee(List<Trainee> trainee) {
-        this.trainees = trainee;
+    public void setTrainees(List<Trainee> trainees) {
+        this.trainees = trainees;
     }
 
     @Override

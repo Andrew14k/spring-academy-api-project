@@ -2,6 +2,7 @@ package com.sparta.uq.springapiproject.controllers;
 
 
 import com.sparta.uq.springapiproject.dtos.CourseDTO;
+import com.sparta.uq.springapiproject.dtos.TraineeDTO;
 import com.sparta.uq.springapiproject.entities.Course;
 import com.sparta.uq.springapiproject.repositories.CourseRepository;
 import com.sparta.uq.springapiproject.services.CourseService;
@@ -55,12 +56,12 @@ public class CourseController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedCourse);
     }
 
-//    @Operation(summary = "Updates a course already present in the database", description = "Updates a course, with id provided in the path. fails if the object is not present")
-//    @PutMapping(value = "/{id}")
-//    public ResponseEntity<Course> updateCourse(@RequestBody Course course, @PathVariable int id)
-//    {
-//        //
-//    }
+    @Operation(summary = "Updates a course already present in the database", description = "Updates a course, with id provided in the path. fails if the object is not present")
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<CourseDTO> updateTrainee(@RequestBody CourseDTO courseDTO) {
+        CourseDTO updatedCourse = service.updateCourse(courseDTO);
+        return ResponseEntity.status(201).body(updatedCourse);
+    }
 
     @Operation(summary = "Delete a course", description = "Ddeletes a course specificed by ID")
     @DeleteMapping(value = "/{id}")

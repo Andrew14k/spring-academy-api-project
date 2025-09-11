@@ -49,7 +49,6 @@ public class TrainerService {
         return false;
     }
 
-
     public TrainerDTO updateTrainer(TrainerDTO trainer) {
         if (!trainerRepository.existsById(trainer.getId())) {
             throw new IllegalArgumentException("Trainer does not exist");

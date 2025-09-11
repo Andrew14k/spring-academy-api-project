@@ -2,7 +2,9 @@ package com.sparta.uq.springapiproject.services;
 
 import com.sparta.uq.springapiproject.dtos.CourseDTO;
 import com.sparta.uq.springapiproject.dtos.CourseMapper;
+import com.sparta.uq.springapiproject.dtos.TraineeDTO;
 import com.sparta.uq.springapiproject.entities.Course;
+import com.sparta.uq.springapiproject.entities.Trainee;
 import com.sparta.uq.springapiproject.repositories.CourseRepository;
 import com.sparta.uq.springapiproject.dtos.CourseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,12 +54,12 @@ public class CourseService {
         return false;
     }
 
-//    public CourseDTO updateCourseById(int course_id, CourseDTO courseDTO) {
-//        if (courseDTO == null || !courseRepository.existsById(course_id)) {
-//            throw new NoSuchElementException("Course not found");
-//        }
-//        Course course = courseMapper.toEntity(courseDTO);
-//        Course updatedCourse = courseRepository.save(course);
-//        return courseMapper.toDTO(updatedCourse);
-//    }
+    public CourseDTO updateCourse(CourseDTO courseDTO) {
+        Course course = courseRepository.findById(courseDTO.getId())
+                .orElseThrow(() -> new IllegalArgumentException("Trainee with id " + courseDTO.getId() + " not found"));
+        course.setId(courseDTO.getId());
+        course.setTitle(courseDTO.getTitle());
+        Course updatedCourse = courseRepository.save(course);
+        return  courseMapper.toDTO(updatedCourse);
+    }
 }
