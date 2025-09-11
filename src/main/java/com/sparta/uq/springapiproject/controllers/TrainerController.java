@@ -6,11 +6,12 @@ import com.sparta.uq.springapiproject.dtos.TrainerMapper;
 import com.sparta.uq.springapiproject.entities.Trainer;
 import com.sparta.uq.springapiproject.services.TrainerService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-
+@Tag(name = "trainer-controller", description = "Operations on trainer table")
 @RestController //@Controller and @ResponseBody
 @RequestMapping("/trainers")
 public class TrainerController {
