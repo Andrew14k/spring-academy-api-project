@@ -5,19 +5,19 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "courses")
+@Table(name = "course")
 public class Course{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Integer id;
+    private Integer course_id;
 
     @Column(name = "Title", nullable = false)
     private String title;
 
     @OneToMany(
-            mappedBy = "trainees",
-            cascade = CascadeType.ALL,
+            mappedBy = "trainee_id",
+            cascade = CascadeType.MERGE,
             orphanRemoval = true
     )
     private List<Trainee> trainees;
@@ -32,11 +32,11 @@ public class Course{
     }
 
     public Integer getId() {
-        return id;
+        return course_id;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.course_id = id;
     }
 
     public String getTitle() {
@@ -58,7 +58,7 @@ public class Course{
     @Override
     public String toString() {
         return "Course{" +
-                "id=" + id +
+                "id=" + course_id +
                 ", title='" + title + '\'' +
                 ", trainee=" + trainees +
                 '}';

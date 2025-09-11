@@ -8,10 +8,14 @@ public class Trainee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Integer id;
+    private Integer trainee_id;
 
     @Column(name = "full_name", nullable = false)
     private String fullName;
+
+    @JoinColumn(name = "course_id", nullable = false)
+    private Integer course_id;
+
 
 
     public Trainee(String fullName) {
@@ -24,11 +28,11 @@ public class Trainee {
     }
 
     public Integer getId() {
-        return id;
+        return trainee_id;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.trainee_id = id;
     }
 
     public String getFullName() {
@@ -39,12 +43,18 @@ public class Trainee {
         this.fullName = fullName;
     }
 
+    public Integer getCourse_id() {
+        return course_id;
+    }
 
+    public void setCourse_id(Integer course_id) {
+        this.course_id = course_id;
+    }
 
     @Override
     public String toString() {
         return "Trainee{" +
-                "id=" + id +
+                "id=" + trainee_id +
                 ", fullName='" + fullName + '\'' +
                 '}';
     }

@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "trainers")
+@Table(name = "trainer")
 public class Trainer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,8 +20,8 @@ public class Trainer {
     private String fullName;
 
     @OneToMany(
-            mappedBy = "course",
-            cascade = CascadeType.ALL,
+            mappedBy = "course_id",
+            cascade = CascadeType.MERGE,
             orphanRemoval = true
     )
     private List<Course> courses = new ArrayList<>();
