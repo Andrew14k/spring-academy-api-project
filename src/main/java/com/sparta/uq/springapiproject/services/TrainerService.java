@@ -41,10 +41,12 @@ public class TrainerService {
         return trainerMapper.toDTO(trainerRepository.save(trainerMapper.toEntity(trainer)));
     }
 
-    public void deleteTrainer(Integer id) {
-        Trainer trainer = trainerMapper.toEntity(getTrainerByID(id));
-        if(trainer!=null){trainerRepository.delete(trainer);}
-        else{throw new EntityNotFoundException("Trainer with id " + id + " not found");}
+    public boolean deleteTrainer(Integer id) {
+        if (trainerRepository.existsById(id)) {
+            trainerRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 
 
