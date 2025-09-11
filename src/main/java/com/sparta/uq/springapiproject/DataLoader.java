@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Configuration
@@ -26,36 +27,85 @@ public class DataLoader {
         return args -> {
             System.out.println("DataLoader running...");
             if (traineeRepository.count() == 0) {
-                var sleve = new Trainee("Sleve Mcdicheal");
-                var willie = new Trainee("Willie Dustice");
-                var jeromy = new Trainee("Jeremy Dowell");
-                var dean = new Trainee("Dean Wesrey");
+                // --- Trainees ---
+                var sleve   = new Trainee("Sleve McDichael");
+                var willie  = new Trainee("Willie Dustice");
+                var jeromy  = new Trainee("Jeremy Dowell");
+                var dean    = new Trainee("Dean Wesrey");
+                var todd    = new Trainee("Todd Bonzalez");
+                var mike    = new Trainee("Mike Truck");
+                var bob     = new Trainee("Bobson Dugnutt");
+                var jimmy   = new Trainee("Jimmy Hatt");
+                var daniel  = new Trainee("Daniel Mortensen");
+                var frank   = new Trainee("Frank Wobama");
+                var peter   = new Trainee("Peter Gozinya");
+                var rick    = new Trainee("Rick Astley");
+                var larry   = new Trainee("Larry Tupper");
+                var sam     = new Trainee("Sam Saran");
+                var kevin   = new Trainee("Kevin Bantam");
+                var emily   = new Trainee("Emily Roberts");
+                var sarah   = new Trainee("Sarah Connor");
+                var jessica = new Trainee("Jessica White");
+                var raj     = new Trainee("Rajesh Kumar");
+                var lin     = new Trainee("Lin Wei");
 
-                List<Trainee> javaTrainees = new ArrayList<Trainee>();
-                javaTrainees.add(sleve);
-                javaTrainees.add(willie);
+// --- Courses ---
+                List<Trainee> javaTrainees = Arrays.asList(sleve, willie, todd, mike);
                 var java = new Course("Java 101", javaTrainees);
                 courseRepository.save(java);
+                javaTrainees.forEach(t -> {
+                    t.setCourse_id(java.getId());
+                    traineeRepository.save(t);
+                });
 
-                sleve.setCourse_id(java.getId());
-                willie.setCourse_id(java.getId());
-                traineeRepository.save(sleve);
-                traineeRepository.save(willie);
-
-                List<Trainee> devopsTrainees = new ArrayList<Trainee>();
-                devopsTrainees.add(jeromy);
-                javaTrainees.add(dean);
+                List<Trainee> devopsTrainees = Arrays.asList(jeromy, dean, bob, jimmy);
                 var devops = new Course("DevOps 101", devopsTrainees);
                 courseRepository.save(devops);
+                devopsTrainees.forEach(t -> {
+                    t.setCourse_id(devops.getId());
+                    traineeRepository.save(t);
+                });
 
-                jeromy.setCourse_id(devops.getId());
-                dean.setCourse_id(devops.getId());
-                traineeRepository.save(jeromy);
-                traineeRepository.save(dean);
+                List<Trainee> webTrainees = Arrays.asList(daniel, frank, peter, rick);
+                var web = new Course("Web Development 101", webTrainees);
+                courseRepository.save(web);
+                webTrainees.forEach(t -> {
+                    t.setCourse_id(web.getId());
+                    traineeRepository.save(t);
+                });
 
-                List<Course> andrewCourses = new ArrayList<>();
-                andrewCourses.add(java);
+                List<Trainee> dataTrainees = Arrays.asList(larry, sam, kevin, emily);
+                var data = new Course("Data Science 101", dataTrainees);
+                courseRepository.save(data);
+                dataTrainees.forEach(t -> {
+                    t.setCourse_id(data.getId());
+                    traineeRepository.save(t);
+                });
+
+                List<Trainee> aiTrainees = Arrays.asList(sarah, jessica, raj, lin);
+                var ai = new Course("AI & Machine Learning 101", aiTrainees);
+                courseRepository.save(ai);
+                aiTrainees.forEach(t -> {
+                    t.setCourse_id(ai.getId());
+                    traineeRepository.save(t);
+                });
+
+// --- Trainers ---
+                List<Course> andrewCourses = Arrays.asList(java);
                 trainerRepository.save(new Trainer("Andrew", andrewCourses));
+
+                List<Course> sophiaCourses = Arrays.asList(devops);
+                trainerRepository.save(new Trainer("Sophia", sophiaCourses));
+
+                List<Course> michaelCourses = Arrays.asList(web);
+                trainerRepository.save(new Trainer("Michael", michaelCourses));
+
+                List<Course> priyaCourses = Arrays.asList(data);
+                trainerRepository.save(new Trainer("Priya", priyaCourses));
+
+                List<Course> davidCourses = Arrays.asList(ai);
+                trainerRepository.save(new Trainer("David", davidCourses));
+
 
 
                 System.out.println("Seed data added");

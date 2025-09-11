@@ -30,12 +30,12 @@ public class SpringApiProjectApplication {
         for (Trainee trainee : traineeList) {
             System.out.println(trainee);
         }
-        for (Course course : courseList) {
-            System.out.println(course);
-        }
-        for (Trainer trainer : trainerList) {
-            System.out.println(trainer);
-        }
+//        for (Course course : courseList) {
+//            System.out.println(course);
+//        }
+//        for (Trainer trainer : trainerList) {
+//            System.out.println(trainer);
+//        }
 
 
     }
