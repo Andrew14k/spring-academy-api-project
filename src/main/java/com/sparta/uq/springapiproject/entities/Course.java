@@ -20,11 +20,11 @@ public class Course{
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<Trainee> trainee;
+    private List<Trainee> trainees;
 
-    public Course(String title, Trainee trainee) {
+    public Course(String title, List<Trainee> trainees) {
         this.title = title;
-        this.trainee = trainee;
+        this.trainees = trainees;
     }
 
     public Course() {
@@ -48,11 +48,11 @@ public class Course{
     }
 
     public List<Trainee> getTrainee() {
-        return trainee;
+        return trainees;
     }
 
     public void setTrainee(List<Trainee> trainee) {
-        this.trainee = trainee;
+        this.trainees = trainee;
     }
 
     @Override
@@ -60,7 +60,7 @@ public class Course{
         return "Course{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", trainee=" + trainee +
+                ", trainee=" + trainees +
                 '}';
     }
 }

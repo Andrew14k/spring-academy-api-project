@@ -3,7 +3,7 @@ package com.sparta.uq.springapiproject.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tainee")
+@Table(name = "trainee")
 public class Trainee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,12 +13,10 @@ public class Trainee {
     @Column(name = "full_name", nullable = false)
     private String fullName;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Trainer trainer;
 
-    public Trainee(String fullName, Trainer trainer) {
+    public Trainee(String fullName) {
         this.fullName = fullName;
-        this.trainer = trainer;
+
     }
 
     public Trainee() {
@@ -41,20 +39,13 @@ public class Trainee {
         this.fullName = fullName;
     }
 
-    public Trainer getTrainer() {
-        return trainer;
-    }
 
-    public void setTrainer(Trainer trainer) {
-        this.trainer = trainer;
-    }
 
     @Override
     public String toString() {
         return "Trainee{" +
                 "id=" + id +
                 ", fullName='" + fullName + '\'' +
-                ", trainer=" + trainer +
                 '}';
     }
 }

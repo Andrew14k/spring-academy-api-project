@@ -26,8 +26,9 @@ public class Trainer {
     )
     private List<Course> courses = new ArrayList<>();
 
-    public Trainer(String fullName) {
+    public Trainer(String fullName, List<Course>  courses) {
         this.fullName = fullName;
+        this.courses = courses;
     }
 
     public Trainer() {
