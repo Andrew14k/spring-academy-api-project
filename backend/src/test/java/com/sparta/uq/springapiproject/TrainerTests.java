@@ -32,33 +32,27 @@ public class TrainerTests {
     private static Trainer trainer2 = new Trainer();
     private static Trainer nullTrainer = null;
     private static TrainerDTO trainerDTO1 = new TrainerDTO();
-    private static List<Course> courses = new ArrayList<>();
-    private static Course course = new Course();
-    private static List<CourseDTO> coursesDTO = new ArrayList<>();
-    private static CourseDTO courseDTO = new CourseDTO();
+    private static Integer courseID = 1;
 
     @BeforeAll
     public static void setup(){
         List<Trainee> dummyTrainees = new  ArrayList<>();
         List<TraineeDTO> dummyTraineesDTO = new  ArrayList<>();
-        course.setTrainees(dummyTrainees);
-        courses.add(course);
-        courseDTO.setTrainees(dummyTraineesDTO);
-        coursesDTO.add(courseDTO);
+
 
         trainer1.setId(1);
         trainer1.setFullName("Michael");
-        trainer1.setCourses(courses);
+        trainer1.setCourse(courseID);
         trainers.add(trainer1);
 
         trainer2.setId(2);
         trainer2.setFullName("Priya");
-        trainer2.setCourses(courses);
+        trainer2.setCourse(courseID);
         trainers.add(trainer2);
 
         trainerDTO1.setId(1);
-        trainerDTO1.setFullName("David");
-        trainerDTO1.setCourses(coursesDTO);
+        trainerDTO1.setFullName("Michael");
+        trainerDTO1.setCourse(courseID);
 
         System.out.println(trainer1.getId());
         System.out.println(trainer2.getId());
@@ -164,7 +158,7 @@ public class TrainerTests {
     @DisplayName("Update Trainer Happy Path")
     public void updateTrainerHappyPath() {
 
-        Mockito.when(mockRepository.existsById(1)).thenReturn(true);
+        Mockito.when(mockRepository.findById(1)).thenReturn(Optional.of(trainer1));
         Mockito.when(mockRepository.save(trainer1)).thenReturn(trainer1);
         Mockito.when(trainerMapper.toDTO(Mockito.any())).thenReturn(trainerDTO1);
 
@@ -172,7 +166,7 @@ public class TrainerTests {
 
         Assertions.assertNotNull(updatedTrainer, "Updated trainer should not be null");
         Assertions.assertEquals(1, updatedTrainer.getId(), "Trainer ID should match");
-        Mockito.verify(mockRepository, Mockito.times(1)).save(trainerMapper.toEntity(trainerDTO1));
+        Mockito.verify(mockRepository, Mockito.times(1)).save(trainer1);
 
     }
 

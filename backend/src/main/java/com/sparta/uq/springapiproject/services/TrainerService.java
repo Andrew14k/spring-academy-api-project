@@ -18,16 +18,14 @@ import java.util.NoSuchElementException;
 public class TrainerService {
 
     private final TrainerRepository trainerRepository;
-    private final CourseRepository courseRepository;
     private final TrainerMapper trainerMapper;
 
-    public TrainerService(TrainerRepository trainerRepository, TrainerMapper trainerMapper, CourseRepository courseRepository) {
+    public TrainerService(TrainerRepository trainerRepository, TrainerMapper trainerMapper) {
         if (trainerRepository == null) {
             throw new IllegalArgumentException("Repository cannot be null");
         }
         this.trainerRepository = trainerRepository;
         this.trainerMapper =  trainerMapper;
-        this.courseRepository = courseRepository;
     }
 
     public List<TrainerDTO> getAllTrainers() {
@@ -40,10 +38,13 @@ public class TrainerService {
     }
 
     public TrainerDTO saveTrainer(TrainerDTO trainerDTO) {
-        trainerDTO.setId(null);
+        if (trainerDTO == null) {
+            throw new IllegalArgumentException("Trainer cannot be null");
+        }
         Trainer trainer = trainerMapper.toEntity(trainerDTO);
         Trainer newTrainer = trainerRepository.save(trainer);
         return trainerMapper.toDTO(newTrainer);
+
     }
 
     public boolean deleteTrainer(Integer id) {
@@ -56,7 +57,7 @@ public class TrainerService {
 
     public TrainerDTO updateTrainer(TrainerDTO trainerDTO) {
         Trainer trainer = trainerRepository.findById(trainerDTO.getId())
-                .orElseThrow(() -> new IllegalArgumentException("Trainee with id " + trainerDTO.getId() + " not found"));
+                .orElseThrow(() -> new IllegalArgumentException("Trainer with id " + trainerDTO.getId() + " not found"));
         trainer.setFullName(trainerDTO.getFullName());
         trainer.setCourse(trainerDTO.getCourse());
         Trainer updatedTrainer = trainerRepository.save(trainer);
