@@ -16,7 +16,12 @@ public class Trainee {
     @JoinColumn(name = "course_id", nullable = false)
     private Integer course_id;
 
-
+    public Trainee(String fullName_, Integer course_id_, Integer, trainee_id_)
+    {
+        this.fullName = fullName_;
+        this.course_id = course_id_;
+        this.trainee_id = trainee_id_;
+    }
 
     public Trainee(String fullName) {
         this.fullName = fullName;
