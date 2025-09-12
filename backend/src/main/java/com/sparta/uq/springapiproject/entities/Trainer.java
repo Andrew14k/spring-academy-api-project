@@ -19,16 +19,12 @@ public class Trainer {
     @Column(name = "full_name", length = 40)
     private String fullName;
 
-    @OneToMany(
-            mappedBy = "course_id",
-            cascade = CascadeType.MERGE,
-            orphanRemoval = true
-    )
-    private List<Course> courses = new ArrayList<>();
+    @Column(name = "course", nullable = false)
+    private Integer course;
 
-    public Trainer(String fullName, List<Course>  courses) {
+    public Trainer(String fullName, Integer course) {
         this.fullName = fullName;
-        this.courses = courses;
+        this.course = course;
     }
 
     public Trainer() {
@@ -50,12 +46,12 @@ public class Trainer {
         this.fullName = fullName;
     }
 
-    public List<Course> getCourses() {
-        return courses;
+    public Integer getCourse() {
+        return course;
     }
 
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
+    public void setCourse(Integer course) {
+        this.course = course;
     }
 
     @Override
@@ -63,7 +59,6 @@ public class Trainer {
         return "Trainer{" +
                 "id=" + id +
                 ", fullName='" + fullName + '\'' +
-                ", courses=" + courses +
                 '}';
     }
 }

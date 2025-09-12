@@ -45,7 +45,7 @@ public class TrainerController {
     @Operation(summary = "Add a new trainer", description = "Create a new trainer in the database")
     @PostMapping
     public ResponseEntity<TrainerDTO> addTrainer(@RequestBody TrainerDTO trainerDTO) {
-        TrainerDTO addedTrainer= trainerService.saveTrainer(trainerDTO);
+        TrainerDTO addedTrainer = trainerService.saveTrainer(trainerDTO);
         return ResponseEntity.status(201).body(addedTrainer);
     }
 

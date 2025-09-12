@@ -5,7 +5,7 @@ import java.util.List;
 public class TrainerDTO {
     private Integer id;
     private String fullName;
-    private List<CourseDTO> courses;
+    private Integer course;
 
     public String getFullName() {
         return fullName;
@@ -23,11 +23,11 @@ public class TrainerDTO {
         this.id = id;
     }
 
-    public List<CourseDTO> getCourses() {
-        return courses;
+    public Integer getCourse() {
+        return course;
     }
 
-    public void setCourses(List<CourseDTO> courses) {
-        this.courses = courses;
+    public void setCourse(Integer course) {
+        this.course = course;
     }
 }

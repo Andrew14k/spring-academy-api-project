@@ -92,21 +92,19 @@ public class DataLoader {
 
 // --- Trainers ---
                 List<Course> andrewCourses = Arrays.asList(java);
-                trainerRepository.save(new Trainer("Andrew", andrewCourses));
+                trainerRepository.save(new Trainer("Andrew", java.getId()));
 
                 List<Course> sophiaCourses = Arrays.asList(devops);
-                trainerRepository.save(new Trainer("Sophia", sophiaCourses));
+                trainerRepository.save(new Trainer("Sophia", devops.getId()));
 
                 List<Course> michaelCourses = Arrays.asList(web);
-                trainerRepository.save(new Trainer("Michael", michaelCourses));
+                trainerRepository.save(new Trainer("Michael", web.getId()));
 
                 List<Course> priyaCourses = Arrays.asList(data);
-                trainerRepository.save(new Trainer("Priya", priyaCourses));
+                trainerRepository.save(new Trainer("Priya", data.getId()));
 
                 List<Course> davidCourses = Arrays.asList(ai);
-                trainerRepository.save(new Trainer("David", davidCourses));
-
-
+                trainerRepository.save(new Trainer("David", ai.getId()));
 
                 System.out.println("Seed data added");
             } else {

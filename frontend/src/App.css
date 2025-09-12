@@ -1,0 +1,14 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header, .footer {
+    width: 100vw;
+    left: 0;
+    right: 0;
+    position: relative;
+    background: #212529;
+    color: #fff;
+}
