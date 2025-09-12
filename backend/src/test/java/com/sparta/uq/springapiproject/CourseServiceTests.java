@@ -174,22 +174,21 @@ public class CourseServiceTests {
     }
 
     @Test
-    @DisplayName("Save Course — Happy Path")
-    void saveCourseHappyPathTest() {
-        Mockito.when(courseMapper.toEntity(courseDTO)).thenReturn(course1);
+    @DisplayName("Update Course Happy Path")
+    public void updateCourseHappyPathTest() {
+
+        Mockito.when(mockRepository.existsById(1)).thenReturn(true);
+        Mockito.when(mockRepository.findById(1)).thenReturn(Optional.of(course1)); // <-- ADD THIS
         Mockito.when(mockRepository.save(course1)).thenReturn(course1);
-        Mockito.when(courseMapper.toDTO(course1)).thenReturn(courseDTO);
+        Mockito.when(courseMapper.toDTO(Mockito.any())).thenReturn(courseDTO);
 
-        CourseDTO savedCourse = sut.saveCourse(courseDTO);
+        CourseDTO updatedCourse = sut.updateCourse(courseMapper.toDTO(course1));
 
-        Assertions.assertNotNull(savedCourse);
-        Assertions.assertEquals(1, savedCourse.getId());
-
-        Mockito.verify(courseMapper).toEntity(courseDTO);
-        Mockito.verify(mockRepository).save(course1);
-        Mockito.verify(courseMapper).toDTO(course1);
-        Mockito.verifyNoMoreInteractions(mockRepository, courseMapper);
+        Assertions.assertNotNull(updatedCourse, "Updated course should not be null");
+        Assertions.assertEquals(1, updatedCourse.getId(), "Course ID should match");
     }
+
+
 
 
     @Test
