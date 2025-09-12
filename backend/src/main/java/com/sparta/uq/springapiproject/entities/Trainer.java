@@ -19,7 +19,7 @@ public class Trainer {
     @Column(name = "full_name", length = 40)
     private String fullName;
 
-    @Column(name = "course", nullable = false)
+    @JoinColumn(name = "course_id", nullable = false)
     private Integer course;
 
     public Trainer(String fullName, Integer course) {
