@@ -9,6 +9,8 @@ These can be accessed through a front-end host, or using swaggerUI implementatio
 - npm (>=6)
 - Node.js (>=14)
 - Intellij IDE
+- Docker Desktop
+
 ### Installation
 ```bash
 git clone https://github.com/emilia-green/spring-academy-api-project.git
