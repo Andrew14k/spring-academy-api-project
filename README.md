@@ -38,6 +38,7 @@ And the project will run on the same localhost ports!
 - Java/Spring Boot - In-memory database formulation, services, controllers, DTOs and data loader. OpenAPI configuration with Swagger UI
 - GitHub - Version control in collaborative environment
 - Amazon AWS - Creation of EC2 instances for deploying both the front-end and back-end (manually) on the cloud
+- Docker Desktop - Containerisation of the application, building the full application at once.
 
 ## 💡 Future Enhancements for Retrospective
 - Further extensions of database tables, implementing attributes, furthering relationships between tables for more in-depth application.
