@@ -25,6 +25,14 @@ npm install
 npm run dev
 ```
 
+#### **Alternatively** - Run with Docker
+- If you have docker desktop installed on your computer, the application can be run with a simple command, building and executing the front and back-ends simultaneously. After cloning the repository, just run (in the root directory of the app) :
+```bash
+docker-compose up --build
+```
+
+And the project will run on the same localhost ports!
+
 ## 🧩 Tech Stack
 - React/JS - Front-end display of tables
 - Java/Spring Boot - In-memory database formulation, services, controllers, DTOs and data loader. OpenAPI configuration with Swagger UI
